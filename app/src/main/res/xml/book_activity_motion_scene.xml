@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        android:id="@+id/startToEnd"
+        app:constraintSetStart="@id/start"
+        app:constraintSetEnd="@id/end">
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="60"
+                app:motionTarget="@id/synopsisText"/>
+        </KeyFrameSet>
+
+        <OnSwipe
+            app:onTouchUp="autoCompleteToStart"
+            app:touchAnchorSide="top"
+            app:touchAnchorId="@id/bookCover"
+            app:dragDirection="dragUp"/>
+
+
+    </Transition>
+
+    <!--Start-->
+
+    <ConstraintSet android:id="@+id/start">
+
+        <Constraint android:id="@id/bookCover">
+
+            <Layout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"/>
+
+            <Transform
+                android:rotationX="0"
+                android:elevation="4dp">
+            </Transform>
+
+        </Constraint>
+
+        <Constraint android:id="@id/bookSynopsis">
+
+            <Layout
+                app:layout_constraintStart_toStartOf="@id/bookCover"
+                app:layout_constraintEnd_toEndOf="@id/bookCover"
+                app:layout_constraintTop_toTopOf="@id/bookCover"
+                app:layout_constraintBottom_toBottomOf="@id/bookCover"
+                android:layout_width="100dp"
+                android:layout_height="200dp"/>
+
+            <Transform
+                android:elevation="0dp"
+                android:rotationX="-55">
+            </Transform>
+
+
+        </Constraint>
+
+
+    </ConstraintSet>
+
+    <!--End-->
+
+    <ConstraintSet android:id="@+id/end">
+
+        <Constraint android:id="@id/bookCover">
+
+            <Layout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bookSynopsis"
+                app:layout_constraintBottom_toBottomOf="@id/bookSynopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"/>
+
+            <Transform
+                android:rotationX="-55"
+                android:translationY="200dp">
+            </Transform>
+
+        </Constraint>
+
+        <Constraint android:id="@id/bookSynopsis">
+
+            <Layout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="300dp"
+                android:layout_height="300dp"/>
+
+            <Transform
+                android:rotationX="0"
+                android:translationY="0dp">
+            </Transform>
+
+
+        </Constraint>
+
+
+    </ConstraintSet>
+
+
+</MotionScene>
